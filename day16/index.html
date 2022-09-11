@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        body{
+            display: flex;
+            background: orange;
+            height: 100vh;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .caro-box{
+            width: 500px;
+            height: 330px;
+            background: #fff;
+        }
+
+        .row {
+            display: flex;
+        }
+
+        .column {
+            margin: 5px;
+            width: 33%;
+            height: 100px;
+            border: 1px solid #000;
+        }
+
+        .x-turn{
+            background: red;
+            /* không cho click nữa sau khi đã add class */
+            pointer-events: none;
+        }
+
+        .o-turn {
+            background: blue;
+            pointer-events: none;
+        }
+
+    </style>
+    <title>Document</title>
+</head>
+<body>
+    <div class="caro-box">
+        <div class="row">
+            <div id = "1" class="column"></div>
+            <div id = "2" class="column"></div>
+            <div id = "3" class="column"></div>
+        </div>
+        <div class="row">
+            <div id = "4" class="column"></div>
+            <div id = "5" class="column"></div>
+            <div id = "6" class="column"></div>
+        </div>
+        <div class="row">
+            <div id = "7" class="column"></div>
+            <div id = "8" class="column"></div>
+            <div id = "9" class="column"></div>
+        </div>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+</html>
