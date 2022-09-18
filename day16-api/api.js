@@ -24,6 +24,13 @@
 const REQUEST_URL = 'https://js-post-api.herokuapp.com/api';
 const postList = document.querySelector('.post-list');
 
+//loading với after-loading
+const loading = document.querySelector('.loading');
+const afterLoading = document.querySelector('.after-loading');
+
+loading.style.display = 'block';
+afterLoading.style.display = 'none';
+
 // lấy đc array data post bằng cách call api -> thực hiện build post bằng cách dùng template, sau đó appentchild vào post-list
 fetch(`${REQUEST_URL}/posts`).then(function(response){
     response.json().then(function(data){
@@ -31,6 +38,9 @@ fetch(`${REQUEST_URL}/posts`).then(function(response){
             const postElement = buildPostElement(element);
             postList.appendChild(postElement);
         });
+        //sau khi load data xong thì show after-loading ra
+        afterLoading.style.display = 'block';
+        loading.style.display = 'none';
     })
 })
 
@@ -53,6 +63,15 @@ function buildPostElement(post){
     const postDescription = postElement.querySelector('.description');
     postDescription.innerText = post.description;
 
+    //img
+    const postImg = postElement.querySelector(".post-img");
+    postImg.src = post.postImg;
+
+    //tạo href để đi tới page detail của post
+    const postLink = postElement.querySelector(".post-link");
+    //tạo thêm param id cho href
+    postLink.href = `detail.html?postId=${post.id}`;
+    
     //return lại 1 cái postelement để append vào post-list
     return postElement;
 }
