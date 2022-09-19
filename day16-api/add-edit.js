@@ -1,14 +1,14 @@
 const submitBtn = document.querySelector('.submit-button');
 const REQUEST_URL = 'https://js-post-api.herokuapp.com/api';
 
-function showErr(selector,textErr){
+function showErr(selector, textErr) {
     const element = document.querySelector(selector);
     element.style.display = 'block';
     element.innerText = textErr;
 }
 
 
-function handleAddPost(event){
+function handleAddPost(event) {
     // cancel những cái sự kiện default
     event.preventDefault();
     const title = document.querySelector('#title');
@@ -17,13 +17,13 @@ function handleAddPost(event){
 
     console.log(title.value);
 
-    if(!title.value){
+    if (!title.value) {
         showErr('.title-err', 'Title cannot empty');
     }
-    if(!author.value){
+    if (!author.value) {
         showErr('.author-err', 'Author cannot empty');
     }
-    if(!description.value){
+    if (!description.value) {
         showErr('.description-err', 'Description cannot empty');
     }
     try {
@@ -39,9 +39,9 @@ function handleAddPost(event){
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify(newPost)
-        }).then(function(jsonData){
+        }).then(function (jsonData) {
             return jsonData.json();
-        }).then(function(data){
+        }).then(function (data) {
             console.log(data);
             window.location.href = 'detail.html?postId=' + data.id;
         })
